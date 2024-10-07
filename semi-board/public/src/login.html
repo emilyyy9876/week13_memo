@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="welcome">
+            Welcome Back!
+        </div>
+        <div class="login-form">
+            <h1>Login</h1>
+            <p>Welcome back! Please login to your account.</p>
+            <form>
+                <input id="userId" type="text" placeholder="User Name" required>
+                <input id="userPassword" type="password" placeholder="Password" required>
+                <!--아이디 기억하기..보류-->
+                <div class="remember-forgot">
+                    <label>
+                        <input type="checkbox"> remember me
+                    </label>
+                    <!--아이디 찾기..보류-->
+                    <a href="#">Forgot password?</a>
+                </div>
+                <button id="loginButton" type="submit" class="login-button">Login</button>
+            </form>
+            <div class="signup">
+                New User? <a href="./board.html">Signup</a>
+            </div>
+        </div>
+    </div>
+    <script src="../scripts/server.js"></script>
+</body>
+</html>
