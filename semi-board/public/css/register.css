@@ -53,7 +53,7 @@ input[type="text"], input[type="password"] {
     color: #8a2be2;
     text-decoration: none;
 }
-.login-button {
+.signup-button {
     width: 100%;
     padding: 10px;
     background-color: #8a2be2;
@@ -65,8 +65,4 @@ input[type="text"], input[type="password"] {
 .signup {
     text-align: center;
     margin-top: 15px;
-}
-.signup a {
-    color: #8a2be2;
-    text-decoration: none;
 }
