@@ -4,9 +4,12 @@ function insert_user_in_db(err,res,conn,data){
 
     console.log('db connection success & get pool');
 
+    let now = new Date();
+    now = `${now.getUTCFullYear()}-${now.getMonth()+1}-${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+
     // const _query = 'INSERT INTO user (uid,upassword) VALUES (?,?)';
-    const sql = 'INSERT INTO user (uid,upassword) VALUES (?,SHA2(?, 256))';
-    const query_values = [data['param_uid'],data['param_upassword']];
+    const sql = 'INSERT INTO user (u_id,u_password,u_nickname,u_reg_date) VALUES (?,SHA2(?, 256),?,?)';
+    const query_values = [data['param_uid'],data['param_upassword'],data['param_unickname'],now];
 
     const exec = conn.query(sql, query_values,
         (err,result)=>{
@@ -39,38 +42,31 @@ function insert_user_in_db(err,res,conn,data){
 
 
 function login_check(err,res,conn,data){
-    if(err){throw err;}
-
-    const _query = 'SELECT uid,upassword FROM user WHERE uid = ? and upassword = SHA2(?,256)';
-    const query_values = [data['param_uid'],data['param_upassword']];
-
-    const exec = conn.query(_query,query_values,
-        (err,rows)=>{
-            conn.release();
-
-            if(err){
-                console.log(' SQL error');
-                console.dir(err);
-                res.writeHead('200',{'Content-Type':'text/html; charset=utf8'})
-                res.write('<h2>SQL query fail</h2>');
-                res.end();
-                return;
-            }
-
-            if(rows.lenth > 0){
-                console.log(rows.length == 1 ? '로그인 가능' : '로그인 불가능');
-                res.writeHead('200',{'Content-Type':'text/html; charset=utf8'})
-                res.write('<h2>Login success</h2>');
-                res.end();
-                return;
-            }else{
-                res.writeHead('200',{'Content-Type':'text/html; charset=utf8'})
-                res.write('<h2>Login fail</h2>');
-                res.end();
-                return;
-            }
+    return new Promise((resolve, reject) => {
+        if (err) {
+            reject(err);
+            return;
         }
-    )
+        
+        const sql = 'SELECT u_id,u_password FROM user WHERE u_id = ? and u_password = ?';
+        const query_values = [data['param_uid'],data['param_upassword']];
+
+        conn.query(sql, query_values, (err, rows) => {
+            conn.release();
+            if (err) {
+                console.log('SQL error');
+                console.dir(err);
+                reject(err);
+                return;
+            }
+    
+            if (rows.length === 1) {
+                resolve(true); // 로그인 성공
+            } else {
+                resolve(false); // 로그인 실패
+            }
+        });
+    });
 }
 
 

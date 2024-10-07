@@ -47,24 +47,40 @@ express.static() 은 express 에서 정적 파일을 클라이언트에 제공�
 URL을 통해 직접 접근할 수 있게 함.
 /view 경로로 시작하는 요청을 처리할 때, view 디렉토리 내의 정적 파일을 제공한다.
 */
-app.use('/public',static(path.join(__dirname,'public/src')));
-// route 잡기
+app.use('/src',static(path.join(__dirname,'./public/src')));
+app.use('/css',static(path.join(__dirname,'./public/css')));
+app.use('/js',static(path.join(__dirname,'./public/js')));
+
+
+// route 
 app.get('/',(req,res)=>{
     res.sendFile(path.join(__dirname,'./public/src','login.html'));
 })
 
-// index page
-// app.get('/', (req, res) => {
-//     res.sendFile(path.join(__dirname, './public/index.html'));
-// })
+app.get('/signup',(req,res)=>{
+    res.sendFile(path.join(__dirname,'./public/src/register.html'));
+})
+
+app.get('/board',(req,res)=>{
+    res.sendFile(path.join(__dirname,'./public/src/board.html'));
+})
+
+
+
+
+
+
+
+// ============================ function ====================================
 
 // register user API
-app.post('/view/process/register',(req,res)=>{
+app.post('/register',(req,res)=>{
     console.log('===== register request =====');
     
     const data = {
-        'param_uid' : req.body.id,
-        'param_upassword' : req.body.pw
+        'param_uid' : req.body.u_id,
+        'param_upassword' : req.body.u_password,
+        'param_unickname' : req.body.u_nickname
     }
     
     pool.getConnection((err,conn)=>{
@@ -74,16 +90,24 @@ app.post('/view/process/register',(req,res)=>{
 
 
 // login user API
-app.post('/view/process/login',(req,res)=>{
+app.post('/login',(req,res)=>{
     console.log('===== login request =====');
-    
-    const data = {
-        'param_uid' : req.body.uid,
-        'param_upassword' : req.body.upassword
-    }
 
-    pool.getConnection((err,conn)=>{
-        user_module.login_check(err,res,conn,data);
+    const data = {
+        'param_uid' : req.body.u_id,
+        'param_upassword' : req.body.u_password
+    }
+    console.log(data);
+    pool.getConnection(async(err,conn)=>{
+        const get_bool = await user_module.login_check(err,res,conn,data);
+        console.log(get_bool);
+        if(get_bool){
+            res.sendFile(path.join(__dirname,'./public/src/board.html'));
+            //board select all 하는 함수 추가
+            // res.render('/board');
+        }else{
+            res.send('로그인 실패');
+        }
     })
 })
 
