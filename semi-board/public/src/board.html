@@ -11,27 +11,27 @@
         <header>
             <div class="title">Title</div>
             <div class="user-info">
-                <img src="/api/placeholder/30/30" alt="User Avatar">
+                <!--user Avatar 파일 추후에 추가하기-->
+                <img src="#" alt="image/user_avatar.png">
                 <span id="userName">${userId}</span>
             </div>
         </header>
         <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Type book name or author">
+            <input type="text" id="searchInput" placeholder="Type post name or author">
             <button id="newPostBtn">New Post</button>
         </div>
         <table>
             <thead>
                 <tr>
-                    <th class="number-column">#</th>
+                    <th>Post Id</th>
                     <th>Title</th>
                     <th>Author</th>
                     <th>Comment</th>
-                    <th>Views</th>
                     <th>Time</th>
                 </tr>
             </thead>
-            <tbody id="bookList">
-                <!-- Book list will be dynamically inserted here -->
+            <tbody id="postList">
+                <!-- 게시물 리스트 자동으로 추가됨 -->
             </tbody>
         </table>
     </div>

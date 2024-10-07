@@ -33,9 +33,14 @@ function loginUser(uid, upassword) {
     });
 }
 
-
+// 버튼 클릭 시 아이디, 비밀번호 변수 설정됨
 document.getElementById('loginButton').addEventListener('click', function() {
     const userId = document.getElementById('userId').value;
     const userPassword = document.getElementById('userPassword').value;
     loginUser(userId, userPassword);
+});
+
+
+document.getElementById('sign').addEventListener('click',function() {
+    
 });

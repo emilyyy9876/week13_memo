@@ -5,23 +5,23 @@
                 const userData = await response.json();
                 document.getElementById('userName').textContent = userData.name;
             } catch (error) {
-                console.error('Error fetching user data:', error);
+                alert('사용자 정보를 가져오지 못했습니다:(', error);
             }
         }
 
         // 게시글 목록 가져오기
         async function fetchPostList() {
             try {
-                const response = await fetch('/view/process/all_user');
+                //url 경로 추후에 수정해야함
+                //const response = await fetch('/view/process/all_user'); 
                 const postList = await response.json();
                 const postListElement = document.getElementById('postList');
                 postListElement.innerHTML = postList.map((b, index) => `
                     <tr>
-                        <td class="number-column">${index + 1}</td>
                         <td>${b.id}</td>
-                        <td>${b.uid}</td>
                         <td>${b.title}</td>
-                        <td>${b.content}</td>
+                        <td>${b.uid}</td>
+                        <td>${b.comment}</td>
                         <td>${b.upload_date}</td>
                     </tr>
                 `).join('');
@@ -35,7 +35,8 @@
             const title = document.getElementById('newPostTitle').value;
             const content = document.getElementById('newPostContent').value;
             try {
-                const response = await fetch('/view/process/new_post', {
+                //임시 url 경로
+                const response = await fetch('/view/process/new_post', { //추후에 수정필요
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -45,7 +46,7 @@
                 if (response.ok) {
                     alert('게시글이 성공적으로 작성되었습니다!:)');
                     closeModal();
-                    fetchpostList(); // 목록 새로고침
+                    fetchPostList(); // 목록 새로고침
                 } else {
                     alert('게시글 작성에 실패했습니다.:(');
                 }
@@ -70,7 +71,7 @@
         // 이벤트 리스너 설정
         document.addEventListener('DOMContentLoaded', () => {
             fetchUserInfo();
-            fetchpostList();
+            fetchPostList();
             
             document.getElementById('newPostBtn').addEventListener('click', openModal);
             document.getElementById('modalClose').addEventListener('click', closeModal);

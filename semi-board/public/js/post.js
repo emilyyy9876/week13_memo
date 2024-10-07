@@ -5,22 +5,24 @@ const postId = urlParams.get('id');
 // 게시글 데이터를 가져오는 함수
 async function fetchPostData() {
     try {
-        const response = await fetch(`/view/process/one_post?id=${postId}`);
+        //임시 url
+        //const response = await fetch(`/view/process/one_post?id=${postId}`); 
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error('Error fetching post data:', error);
+        console.error('게시물 정보를 가져오지 못했습니다 :(', error);
     }
 }
 
 // 댓글 목록을 가져오는 함수
 async function fetchComments() {
     try {
-        const response = await fetch(`/view/process/comments?postId=${postId}`);
+        //임시 url
+        //const response = await fetch(`/view/process/comments?postId=${postId}`);
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error('Error fetching comments:', error);
+        console.error('댓글 정보를 가져오지 못했습니다 :(', error);
     }
 }
 
