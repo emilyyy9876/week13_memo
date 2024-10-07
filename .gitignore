@@ -1,3 +1,4 @@
 node_modules/
 
 semi-board/config/*.json
+semi-board/data/*.json
