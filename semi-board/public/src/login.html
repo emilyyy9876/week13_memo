@@ -14,9 +14,9 @@
         <div class="login-form">
             <h1>Login</h1>
             <p>Welcome back! Please login to your account.</p>
-            <form>
-                <input id="userId" type="text" placeholder="User Name" required>
-                <input id="userPassword" type="password" placeholder="Password" required>
+            <form action="/login" method="post">
+                <input name="u_id" id="u_id" type="text" placeholder="User Name" required>
+                <input name="u_password" id="u_password"  type="password" placeholder="Password" required>
                 <!--아이디 기억하기..보류-->
                 <div class="remember-forgot">
                     <label>
@@ -28,10 +28,10 @@
                 <button id="loginButton" type="submit" class="login-button">Login</button>
             </form>
             <div id="signupButton" class="signup-button">
-                New User? <a href="./register.html">Signup</a>
+                New User? <a href="/signup">Signup</a>
             </div>
         </div>
     </div>
-    <script src="../scripts/server.js"></script>
+    <script src="./server.js"></script>
 </body>
 </html>

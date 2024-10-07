@@ -62,7 +62,7 @@ app.get('/signup',(req,res)=>{
 })
 
 app.get('/board',(req,res)=>{
-    res.render('./public/src/board.html')
+    res.sendFile(path.join(__dirname,'./public/src/board.html'));
 })
 
 
@@ -74,12 +74,13 @@ app.get('/board',(req,res)=>{
 // ============================ function ====================================
 
 // register user API
-app.post('/view/process/register',(req,res)=>{
+app.post('/register',(req,res)=>{
     console.log('===== register request =====');
     
     const data = {
-        'param_uid' : req.body.id,
-        'param_upassword' : req.body.pw
+        'param_uid' : req.body.u_id,
+        'param_upassword' : req.body.u_password,
+        'param_unickname' : req.body.u_nickname
     }
     
     pool.getConnection((err,conn)=>{
@@ -101,8 +102,9 @@ app.post('/login',(req,res)=>{
         const get_bool = await user_module.login_check(err,res,conn,data);
         console.log(get_bool);
         if(get_bool){
+            res.sendFile(path.join(__dirname,'./public/src/board.html'));
             //board select all 하는 함수 추가
-            res.render('/board',{})
+            // res.render('/board');
         }else{
             res.send('로그인 실패');
         }
