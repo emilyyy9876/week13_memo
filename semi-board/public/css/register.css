@@ -24,7 +24,7 @@ body {
     font-size: 24px;
     font-weight: bold;
 }
-.login-form {
+.signup-form {
     padding: 40px;
     width: 300px;
 }
@@ -43,16 +43,8 @@ input[type="text"], input[type="password"] {
     border: 1px solid #ddd;
     border-radius: 4px;
 }
-.remember-forgot {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-.remember-forgot a {
-    color: #8a2be2;
-    text-decoration: none;
-}
+
+
 .signup-button {
     width: 100%;
     padding: 10px;
@@ -61,8 +53,4 @@ input[type="text"], input[type="password"] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
-.signup {
-    text-align: center;
-    margin-top: 15px;
 }

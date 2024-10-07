@@ -35,8 +35,8 @@ function loginUser(uid, upassword) {
 
 // 버튼 클릭 시 아이디, 비밀번호 변수 설정됨
 document.getElementById('loginButton').addEventListener('click', function() {
-    const userId = document.getElementById('userId').value;
-    const userPassword = document.getElementById('userPassword').value;
+    const userId = document.getElementById('u_id').value;
+    const userPassword = document.getElementById('u_password').value;
     loginUser(userId, userPassword);
 });
 
