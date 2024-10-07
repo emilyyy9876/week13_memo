@@ -47,10 +47,10 @@ express.static() 은 express 에서 정적 파일을 클라이언트에 제공�
 URL을 통해 직접 접근할 수 있게 함.
 /view 경로로 시작하는 요청을 처리할 때, view 디렉토리 내의 정적 파일을 제공한다.
 */
-app.use('/view',static(path.join(__dirname,'public')));
+app.use('/public',static(path.join(__dirname,'public/src')));
 // route 잡기
-app.get('/view',(req,res)=>{
-    res.sendFile(path.join(__dirname,'public','index.html'));
+app.get('/',(req,res)=>{
+    res.sendFile(path.join(__dirname,'./public/src','login.html'));
 })
 
 // index page
