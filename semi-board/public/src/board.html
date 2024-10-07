@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book List</title>
+    <link rel="stylesheet" href="../css/board.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="title">Title</div>
+            <div class="user-info">
+                <!--user Avatar 파일 추후에 추가하기-->
+                <img src="#" alt="image/user_avatar.png">
+                <span id="userName">${userId}</span>
+            </div>
+        </header>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Type post name or author">
+            <button id="newPostBtn">New Post</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Post Id</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Comment</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody id="postList">
+                <!-- 게시물 리스트 자동으로 추가됨 -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <h2 class="modal-title">New Post</h2>
+            <div class="modal-content">
+                <input type="text" id="newPostTitle" placeholder="Title">
+                <textarea id="newPostContent" placeholder="Content"></textarea>
+            </div>
+            <button class="modal-submit" id="submitNewPost">글 올리기</button>
+        </div>
+    </div>
+    <script src="../js/board.js"></script>
+    <script src="../scripts/server.js"></script>
+</body>
+</html>
