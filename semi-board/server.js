@@ -123,7 +123,6 @@ app.get('/view/process/one_user',(req,res)=>{
     pool.getConnection((err,conn)=>{
         user_module.get_one_user(err,res,conn,data);
     })
-    
 })
 
 
