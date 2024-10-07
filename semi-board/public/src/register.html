@@ -14,14 +14,12 @@
         <div class="signup-form">
             <h1>Sign up</h1>
             <p>Welcome!</p>
-            <form >
-                <input id="userId" type="text" placeholder="User Name" required>
-                <input id="userPassword" type="password" placeholder="Password" required>
+            <form action="/view/process/register" method="POST">
+                <input id="id" name="id" type="text" placeholder="User Name" required>
+                <input id="pw" name="pw" type="password" placeholder="Password" required>
                 <button id="signupButton" type="submit" class="signup-button">Sign up</button>
             </form>
         </div>
     </div>
-    <script src="../server.js"></script>
-    <script src="../js/"></script>
 </body>
 </html>
