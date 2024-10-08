@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page</title>
+    <link rel="stylesheet" href="../css/mypag.css">
+</head>
+<body>
+    <div class="container">
+        <div class="welcome">
+            Glad to<br>meet you!
+        </div>
+        <div class="mypage-form">
+            <h1>My page</h1>
+            <!--1. 사용자 아바타 눌렀을 때 보이는 section-->
+            <div id="userInfo">
+                <p id="cur_userName">user name</p>
+                <p id="cur_nickname">nickname</p>
+                <button id="changeMyInfo" type="button" class="change-my-info">정보 변경 하기</button>
+            </div>
+
+            <!--2. 정보 변경 하기를 눌렀을 때, 비밀번호 맞는지 확인하는 section -->
+            <form id="passwordCheck" style="display: none;">
+                <input type="password" id="currentPassword" placeholder="현재 비밀번호를 입력하세요">
+                <button id="verifyPassword">확인</button>
+            </form>
+
+            <!--3. 비밀번호를 제대로 작성했을 때, 나오는 section-->
+            <form id="changeInfoForm" action="#########" method="post" style="display: none;">
+                <input name="u_id" id="u_id" type="text" required>
+                <input name="u_password" id="u_password" type="password" required>
+                <input name="u_nickname" id="u_nickname" type="text" required>
+                <button id="confirmChangeInfo" type="submit" class="confirm-change-info">정보 변경 확인</button>
+            </form>
+            <button id="checkMyPosts" style="display: block;">내 게시글 확인하기</button>
+        </div>
+    </div>
+    <script src="../js/mypage.js"></script>
+</body>
+</html>
